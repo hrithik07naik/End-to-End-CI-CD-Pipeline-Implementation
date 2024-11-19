@@ -1,65 +1,36 @@
-# Example Voting App
+# End-to-End CI/CD Pipeline for N-Tier Architecture Microservices
 
-A simple distributed application running across multiple Docker containers.
+## Project Overview
+This project demonstrates the implementation of an end-to-end CI/CD pipeline for an N-Tier microservices application. The application consists of three microservices developed in Python, .NET, and Java. It uses Redis for caching and MySQL for storing user data.
 
-## Getting started
+### Key Features:
+- **CI/CD Pipeline**: Automated deployment using Azure DevOps pipelines and GitOps through Argo CD.
+- **Technologies**: Azure Kubernetes Service (AKS), Argo CD, Ansible, Redis, MySQL, Docker, GitOps.
+- **Architecture**: Multi-language microservices with caching and persistent storage.
 
-Download [Docker Desktop](https://www.docker.com/products/docker-desktop) for Mac or Windows. [Docker Compose](https://docs.docker.com/compose) will be automatically installed. On Linux, make sure you have the latest version of [Compose](https://docs.docker.com/compose/install/).
+## Repository Structure
+- **CI Pipelines**: YAML files for defining CI/CD pipelines for each service.
+- **Infrastructure as Code (IaC)**: Terraform configurations to provision Azure resources (AKS, MySQL).
+- **Kubernetes Manifests**: Deployment files for Kubernetes, including Helm charts and Argo CD configuration.
+- **Ansible Playbooks**: Automation scripts for deploying microservices to AKS.
+- **Dockerfiles**: Containerization configurations for each microservice.
 
-This solution uses Python, Node.js, .NET, with Redis for messaging and Postgres for storage.
+## Technologies Used:
+- **Programming Languages**: Python, .NET, Java
+- **CI/CD Tooling**: Azure DevOps, Argo CD
+- **Infrastructure**: Terraform, Kubernetes, Helm
+- **Caching**: Redis
+- **Database**: MySQL
 
-Run in this directory to build and run the app:
+## Setup Instructions:
+1. Clone the repository.
+2. Set up your Azure account and configure Terraform for AKS and MySQL provisioning.
+3. Follow the pipeline setup instructions in `ci-pipelines/` to configure Azure DevOps pipelines.
+4. Use Ansible for deploying the services on AKS.
+5. Apply Kubernetes manifests via Argo CD.
 
-```shell
-docker compose up
-```
+## License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-The `vote` app will be running at [http://localhost:8080](http://localhost:8080), and the `results` will be at [http://localhost:8081](http://localhost:8081).
-
-Alternately, if you want to run it on a [Docker Swarm](https://docs.docker.com/engine/swarm/), first make sure you have a swarm. If you don't, run:
-
-```shell
-docker swarm init
-```
-
-Once you have your swarm, in this directory run:
-
-```shell
-docker stack deploy --compose-file docker-stack.yml vote
-```
-
-## Run the app in Kubernetes
-
-The folder k8s-specifications contains the YAML specifications of the Voting App's services.
-
-Run the following command to create the deployments and services. Note it will create these resources in your current namespace (`default` if you haven't changed it.)
-
-```shell
-kubectl create -f k8s-specifications/
-```
-
-The `vote` web app is then available on port 31000 on each host of the cluster, the `result` web app is available on port 31001.
-
-To remove them, run:
-
-```shell
-kubectl delete -f k8s-specifications/
-```
-
-## Architecture
-
-![Architecture diagram](architecture.excalidraw.png)
-
-* A front-end web app in [Python](/vote) which lets you vote between two options
-* A [Redis](https://hub.docker.com/_/redis/) which collects new votes
-* A [.NET](/worker/) worker which consumes votes and stores them in…
-* A [Postgres](https://hub.docker.com/_/postgres/) database backed by a Docker volume
-* A [Node.js](/result) web app which shows the results of the voting in real time
-
-## Notes
-
-The voting application only accepts one vote per client browser. It does not register additional votes if a vote has already been submitted from a client.
-
-This isn't an example of a properly architected perfectly designed distributed app... it's just a simple
-example of the various types of pieces and languages you might see (queues, persistent data, etc), and how to
-deal with them in Docker at a basic level.
+## Contact
+For any inquiries, reach out to [your-email@example.com].
