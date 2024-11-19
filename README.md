@@ -1,38 +1,36 @@
-# django-todo
-A simple todo app built with django
+# End-to-End CI/CD Pipeline for N-Tier Architecture Microservices
 
-![todo App](https://raw.githubusercontent.com/shreys7/django-todo/develop/staticfiles/todoApp.png)
-### Setup
-To get this repository, run the following command inside your git enabled terminal
-```bash
-$ git clone https://github.com/shreys7/django-todo.git
-```
-You will need django to be installed in you computer to run this app. Head over to https://www.djangoproject.com/download/ for the download guide
+## Project Overview
+This project demonstrates the implementation of an end-to-end CI/CD pipeline for an N-Tier microservices application. The application consists of three microservices developed in Python, .NET, and Java. It uses Redis for caching and MySQL for storing user data.
 
-Once you have downloaded django, go to the cloned repo directory and run the following command
+### Key Features:
+- **CI/CD Pipeline**: Automated deployment using Azure DevOps pipelines and GitOps through Argo CD.
+- **Technologies**: Azure Kubernetes Service (AKS), Argo CD, Ansible, Redis, MySQL, Docker, GitOps.
+- **Architecture**: Multi-language microservices with caching and persistent storage.
 
-```bash
-$ python manage.py makemigrations
-```
+## Repository Structure
+- **CI Pipelines**: YAML files for defining CI/CD pipelines for each service.
+- **Infrastructure as Code (IaC)**: Terraform configurations to provision Azure resources (AKS, MySQL).
+- **Kubernetes Manifests**: Deployment files for Kubernetes, including Helm charts and Argo CD configuration.
+- **Ansible Playbooks**: Automation scripts for deploying microservices to AKS.
+- **Dockerfiles**: Containerization configurations for each microservice.
 
-This will create all the migrations file (database migrations) required to run this App.
+## Technologies Used:
+- **Programming Languages**: Python, .NET, Java
+- **CI/CD Tooling**: Azure DevOps, Argo CD
+- **Infrastructure**: Terraform, Kubernetes, Helm
+- **Caching**: Redis
+- **Database**: MySQL
 
-Now, to apply this migrations run the following command
-```bash
-$ python manage.py migrate
-```
+## Setup Instructions:
+1. Clone the repository.
+2. Set up your Azure account and configure Terraform for AKS and MySQL provisioning.
+3. Follow the pipeline setup instructions in `ci-pipelines/` to configure Azure DevOps pipelines.
+4. Use Ansible for deploying the services on AKS.
+5. Apply Kubernetes manifests via Argo CD.
 
-One last step and then our todo App will be live. We need to create an admin user to run this App. On the terminal, type the following command and provide username, password and email for the admin user
-```bash
-$ python manage.py createsuperuser
-```
+## License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-That was pretty simple, right? Now let's make the App live. We just need to start the server now and then we can start using our simple todo App. Start the server by following command
-
-```bash
-$ python manage.py runserver
-```
-
-Once the server is hosted, head over to http://127.0.0.1:8000/todos for the App.
-
-Cheers and Happy Coding :)
+## Contact
+For any inquiries, reach out to hrithiknaik2011@gamail.com
