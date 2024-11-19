@@ -33,4 +33,4 @@ This project demonstrates the implementation of an end-to-end CI/CD pipeline for
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## Contact
-For any inquiries, reach out to [your-email@example.com].
+For any inquiries, reach out to hrithiknaik2001@gmail.com.
